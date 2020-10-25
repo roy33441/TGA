@@ -1,10 +1,10 @@
-from Models.Team import Team
 from random import shuffle
-
+from typing import List
+from Team import Team
 
 class ProjectFormation:
     def __init__(self):
-        self.teams_list = []
+        self.teams_list: List[Team] = []
 
     def generate_random(self, students_list, team_length):
         teams_amount = len(students_list) / team_length
@@ -32,3 +32,7 @@ class ProjectFormation:
                     curr_team.add_student(self.teams_list[team_to_remove_from_index].remove_student())
                 self.teams_list.append(curr_team)
 
+    def fitness(self) -> int:
+        
+        for team in self.teams_list:
+            team.get_average_grades
